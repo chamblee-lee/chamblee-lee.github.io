@@ -85,11 +85,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Charles's blog">
+<meta property="og:title" content="Charles' blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Charles's blog">
+<meta property="og:site_name" content="Charles' blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Charles's blog">
+<meta name="twitter:title" content="Charles' blog">
 
 
 
@@ -113,7 +113,7 @@
   <link rel="canonical" href="http://yoursite.com/"/>
 
 
-  <title> Charles's blog </title>
+  <title> Charles' blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +146,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Charles's blog</span>
+      <span class="site-title">Charles' blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -234,6 +234,239 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/12/inherit-from-javascript-object/" itemprop="url">
+                  javascript 对象继承
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-12T16:32:18+08:00" content="2016-11-12">
+              2016-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>原发布于2009年5月7日，现转载于此。</strong><br><a href="http://blog.csdn.net/boral_li/article/details/4159041">原文链接</a></p>
+<p>&emsp;&emsp;在JavaScript中，一切皆是对象，所谓的类也只是用来模拟其它面向对象语言的class的对象而已，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>) </span>&#123;&#125;<span class="comment">//定义一个类</span></div><div class="line">MyClass.call();<span class="comment">//其实这个类本身也是一个对象</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在上面的代码中，并没有为MyClass定义call方法，但是却可以调用call方法，其原因就是JavaScript的原生对象在发挥作用。通过function关键字定义一个类，实质上就是实例化一个Function的实例，因为Javascript在Function的原生对象中定义了call方法，所以即使MyClass的定义是空的，但是还是可以调用call方法！由此，我们就可以看到继承的影子！ </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/12/inherit-from-javascript-object/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/12/oo-feature-of-javascript/" itemprop="url">
+                  javascript 面向对象特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-12T16:06:33+08:00" content="2016-11-12">
+              2016-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>原发布于2009年5月6日，现转载于此。</strong><br><a href="http://blog.csdn.net/boral_li/article/details/4156274">原文链接</a></p>
+<p>&emsp;&emsp;JavaScript出现也不是一天两天了，但近些年之前，一直都只是做一做表单验证，加点花哨的网页特效什么的，顶多算得网页设计的调料 。但是随着应用系统向着网络延伸，Javascript在系统应用中扮演着越来越重要的角色，jQuery、Ext、Dojo等Ajxa框架层出不穷。每一个在浏览器上做开发的程序员都有必要了解一下Javascript语言！</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/12/oo-feature-of-javascript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -384,7 +617,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="Chamblee" />
           <p class="site-author-name" itemprop="name">Chamblee</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -392,7 +625,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -400,7 +633,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

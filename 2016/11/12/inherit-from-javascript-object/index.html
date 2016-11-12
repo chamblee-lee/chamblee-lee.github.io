@@ -1,0 +1,636 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="器,术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="原发布于2009年5月7日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;在JavaScript中，一切皆是对象，所谓的类也只是用来模拟其它面向对象语言的class的对象而已，例如：12function MyClass() &amp;#123;&amp;#125;//定义一个类MyClass.call();//其实这个类本身也是一个对象
+&amp;emsp;&amp;emsp;在上面的代码中，并没有为MyClass定义call方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 对象继承">
+<meta property="og:url" content="http://yoursite.com/2016/11/12/inherit-from-javascript-object/index.html">
+<meta property="og:site_name" content="Charles' blog">
+<meta property="og:description" content="原发布于2009年5月7日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;在JavaScript中，一切皆是对象，所谓的类也只是用来模拟其它面向对象语言的class的对象而已，例如：12function MyClass() &amp;#123;&amp;#125;//定义一个类MyClass.call();//其实这个类本身也是一个对象
+&amp;emsp;&amp;emsp;在上面的代码中，并没有为MyClass定义call方">
+<meta property="og:updated_time" content="2016-11-12T08:43:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 对象继承">
+<meta name="twitter:description" content="原发布于2009年5月7日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;在JavaScript中，一切皆是对象，所谓的类也只是用来模拟其它面向对象语言的class的对象而已，例如：12function MyClass() &amp;#123;&amp;#125;//定义一个类MyClass.call();//其实这个类本身也是一个对象
+&amp;emsp;&amp;emsp;在上面的代码中，并没有为MyClass定义call方">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/12/inherit-from-javascript-object/"/>
+
+
+  <title> javascript 对象继承 | Charles' blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Charles' blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">IT的由术及道之路</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript 对象继承
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-12T16:32:18+08:00" content="2016-11-12">
+              2016-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>原发布于2009年5月7日，现转载于此。</strong><br><a href="http://blog.csdn.net/boral_li/article/details/4159041" target="_blank" rel="external">原文链接</a></p>
+<p>&emsp;&emsp;在JavaScript中，一切皆是对象，所谓的类也只是用来模拟其它面向对象语言的class的对象而已，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>) </span>&#123;&#125;<span class="comment">//定义一个类</span></div><div class="line">MyClass.call();<span class="comment">//其实这个类本身也是一个对象</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在上面的代码中，并没有为MyClass定义call方法，但是却可以调用call方法，其原因就是JavaScript的原生对象在发挥作用。通过function关键字定义一个类，实质上就是实例化一个Function的实例，因为Javascript在Function的原生对象中定义了call方法，所以即使MyClass的定义是空的，但是还是可以调用call方法！由此，我们就可以看到继承的影子！ </p>
+<a id="more"></a>
+<p>&emsp;&emsp;在原生对象中定义的方法call被继承到了MyClass中，那么只要修改一下原生对象，那么就可以模拟出面向对象的继承机制了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyBaseClass</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.Add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> a + b;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    MyClass.prototype = <span class="keyword">new</span> MyBaseClass();</div><div class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line">    <span class="keyword">var</span> X = obj.Add(<span class="number">3</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;只要把MyClass的原生对象指向基类MyBaseClass的实例对象，那么MyClass就可以继承MyBaseClass中的方法，从而实现了继承机制！</p>
+<p><strong>多继承</strong></p>
+<p>&emsp;&emsp;任何对象的直接原生对象都只有一个，那么如果想实现多继承该怎么办呢？可以采用两种办法： </p>
+<p>方法一：链状继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyBaseClassA</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">this</span>.Add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> a + b;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">MyBaseClassB</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">this</span>.Sub = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> a - b;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> &#125;</div><div class="line"> MyBaseClassB.prototype = <span class="keyword">new</span> MyBaseClassA();</div><div class="line"> MyClass.prototype = <span class="keyword">new</span> MyBaseClassB();</div><div class="line"> <span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line"> <span class="keyword">var</span> X = obj.Add(<span class="number">3</span>, <span class="number">4</span>);</div><div class="line"> <span class="keyword">var</span> Y = obj.Sub(<span class="number">9</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure></p>
+<p>方法二：拷贝继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyBaseClassA</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">this</span>.Add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> a + b;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">MyBaseClassB</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">this</span>.Sub = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> a - b;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> A = <span class="keyword">new</span> MyBaseClassA();</div><div class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> method <span class="keyword">in</span> A) &#123;</div><div class="line">     MyClass.prototype[method] = A[method];</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> B = <span class="keyword">new</span> MyBaseClassB();</div><div class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> method <span class="keyword">in</span> B) &#123;</div><div class="line">     MyClass.prototype[method] = B[method];</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass();</div><div class="line"> <span class="keyword">var</span> X = obj.Add(<span class="number">3</span>, <span class="number">4</span>);</div><div class="line"> <span class="keyword">var</span> Y = obj.Sub(<span class="number">9</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure></p>
+<p>继承的本质就是属性拷贝，所以只要手动拷贝基类的所有属性，那么就可以实现多继承了，对于拷贝属性的代码可以封装一下，便于调用:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Extend = <span class="function"><span class="keyword">function</span>(<span class="params">DeriveClass,BaseClass</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> o = <span class="keyword">new</span> BaseClass();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> method <span class="keyword">in</span> o) &#123;</div><div class="line">            DeriveClass.prototype[method] = o[method];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Extend(MyClass, MyBaseClassA);</div><div class="line">    Extend(MyClass, MyBaseClassB);</div></pre></td></tr></table></figure></p>
+<p><strong>构造参数：</strong></p>
+<p>&emsp;&emsp;继承是实现了，但是如果有构造参数有又该怎么处理呢？答案就是在派生类中调用基类构造就可以了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyBaseClass</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.A = a;</div><div class="line">        <span class="keyword">this</span>.B = b;</div><div class="line">        <span class="keyword">this</span>.Add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.A + <span class="keyword">this</span>.B;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">        MyBaseClass.call(<span class="keyword">this</span>, a, b);<span class="comment">//调用基类的构造</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> Extend = <span class="function"><span class="keyword">function</span>(<span class="params">DeriveClass, BaseClass</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> o = <span class="keyword">new</span> BaseClass();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> method <span class="keyword">in</span> o) &#123;</div><div class="line">            DeriveClass.prototype[method] = o[method];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Extend(MyClass, MyBaseClass);</div><div class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass(<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>);</div><div class="line">    <span class="keyword">var</span> X = obj.Add();</div><div class="line">    alert(X);		<span class="comment">//结果：9</span></div></pre></td></tr></table></figure></p>
+<p>call和apply方法是经常用到的两个方法，其作用就是在另一个域内调用方法！</p>
+<p>&emsp;&emsp;继承机制带来的另一个问题就是同名方法隐藏问题！Javascript对象都是由原型对象生成，原型对象也有其自己的原型对象，这样就构成了一条原型对象链，对象链的顶端指向Object原生对象，末端就是对象本身，如果对象链中存在同名的方法，那么对象链末端的方法访问优先级高于顶端的优先级，因此派生类的方法总是隐藏基类的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> BaseClass=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"A"</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Saying A"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> BaseObj = <span class="keyword">new</span> BaseClass();</div><div class="line"><span class="keyword">var</span> X = BaseObj.Hello();</div><div class="line">alert(X);		<span class="comment">//结果：A</span></div><div class="line">BaseClass.prototype.Hello=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"B"</span>;</div><div class="line">	&#125;</div><div class="line"><span class="keyword">var</span> Y = BaseObj.Hello();</div><div class="line">alert(Y);		<span class="comment">//结果：A</span></div><div class="line"><span class="keyword">var</span> MyClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"C"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Extend = <span class="function"><span class="keyword">function</span>(<span class="params">DeriveClass, BaseClass</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> o = <span class="keyword">new</span> BaseClass();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> method <span class="keyword">in</span> o) &#123;</div><div class="line">            DeriveClass.prototype[method] = o[method];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">Extend(MyClass, BaseClass);</div><div class="line"><span class="keyword">var</span> MyObj = <span class="keyword">new</span> MyClass();</div><div class="line"><span class="keyword">var</span> Z = MyObj.Hello();</div><div class="line">alert(Z);		<span class="comment">//结果：C</span></div><div class="line">MyClass.prototype.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"D"</span>;</div><div class="line">	&#125;</div><div class="line">MyClass.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Saying D"</span>;</div><div class="line">	&#125;</div><div class="line"><span class="keyword">var</span> K = MyObj.Hello();</div><div class="line">alert(K);		<span class="comment">//结果：C</span></div><div class="line"><span class="keyword">var</span> L = MyObj.say();</div><div class="line">alert(L);		<span class="comment">//结果：Saying D</span></div></pre></td></tr></table></figure></p>
+<p>方法隐藏的唯一准则就是原型对象链的顺序，方法是否会被隐藏与实现继承的机制相关！</p>
+<p>以后再说一说Javascript面向对象的多态特性！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/器/" rel="tag">#器</a>
+          
+            <a href="/tags/术/" rel="tag">#术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/12/oo-feature-of-javascript/" rel="next" title="javascript 面向对象特性">
+                <i class="fa fa-chevron-left"></i> javascript 面向对象特性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chamblee" />
+          <p class="site-author-name" itemprop="name">Chamblee</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chamblee</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

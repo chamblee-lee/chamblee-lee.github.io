@@ -1,0 +1,640 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="器,术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="原发布于2009年5月6日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;JavaScript出现也不是一天两天了，但近些年之前，一直都只是做一做表单验证，加点花哨的网页特效什么的，顶多算得网页设计的调料 。但是随着应用系统向着网络延伸，Javascript在系统应用中扮演着越来越重要的角色，jQuery、Ext、Dojo等Ajxa框架层出不穷。每一个在浏览器上做开发的程序员都有必要了解一下Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 面向对象特性">
+<meta property="og:url" content="http://yoursite.com/2016/11/12/oo-feature-of-javascript/index.html">
+<meta property="og:site_name" content="Charles' blog">
+<meta property="og:description" content="原发布于2009年5月6日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;JavaScript出现也不是一天两天了，但近些年之前，一直都只是做一做表单验证，加点花哨的网页特效什么的，顶多算得网页设计的调料 。但是随着应用系统向着网络延伸，Javascript在系统应用中扮演着越来越重要的角色，jQuery、Ext、Dojo等Ajxa框架层出不穷。每一个在浏览器上做开发的程序员都有必要了解一下Jav">
+<meta property="og:updated_time" content="2016-11-12T08:29:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 面向对象特性">
+<meta name="twitter:description" content="原发布于2009年5月6日，现转载于此。原文链接
+&amp;emsp;&amp;emsp;JavaScript出现也不是一天两天了，但近些年之前，一直都只是做一做表单验证，加点花哨的网页特效什么的，顶多算得网页设计的调料 。但是随着应用系统向着网络延伸，Javascript在系统应用中扮演着越来越重要的角色，jQuery、Ext、Dojo等Ajxa框架层出不穷。每一个在浏览器上做开发的程序员都有必要了解一下Jav">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/12/oo-feature-of-javascript/"/>
+
+
+  <title> javascript 面向对象特性 | Charles' blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Charles' blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">IT的由术及道之路</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript 面向对象特性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-12T16:06:33+08:00" content="2016-11-12">
+              2016-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>原发布于2009年5月6日，现转载于此。</strong><br><a href="http://blog.csdn.net/boral_li/article/details/4156274" target="_blank" rel="external">原文链接</a></p>
+<p>&emsp;&emsp;JavaScript出现也不是一天两天了，但近些年之前，一直都只是做一做表单验证，加点花哨的网页特效什么的，顶多算得网页设计的调料 。但是随着应用系统向着网络延伸，Javascript在系统应用中扮演着越来越重要的角色，jQuery、Ext、Dojo等Ajxa框架层出不穷。每一个在浏览器上做开发的程序员都有必要了解一下Javascript语言！</p>
+<a id="more"></a>
+<p>&emsp;&emsp;与C++等语言不同的是，Javascript是一种弱类型语言，只有字符串、数值等几种基本的数据类型，并且可以随意转换，由浏览器动态解释执行，这种特性一方面为开发提供了更多的灵活性，另一方面也增加了开发的复杂性！</p>
+<p>&emsp;&emsp;Javascript是一种基于对象的语言，而不是面向对象的语言。Javascript语言本身定义了字符、数组、日期等一系列对象。在任何地方都可以使用这些对象，但是却没有class关键字，不能定义自己的类和对象。Javascript代码只有以面向过程的方式开发，当代码数量级增大的时候，几乎无法控制所有Javascript代码！但是Javascript是极其灵活的语言，它内部的原生对象链特性提供了足够的灵活度让我们可以模拟出面向对象的特性，抽象、封装、继承、多态，一个也不少！</p>
+<p>&emsp;&emsp;首先是一个普通的Javascript方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloWorld</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> “HelloWorld”;&#125;<span class="comment">//定义一个方法   </span></div><div class="line">HelloWorld();<span class="comment">//调用这个方法</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;其实上面的代码就已经创建了一个类HelloWorld，然后又创建了这个类的对象，为了让它看起来更像类和对象，可以把上面的代码改造一下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="keyword">this</span>;&#125;<span class="comment">//定义一个类   </span></div><div class="line"><span class="keyword">var</span> Obj = <span class="keyword">new</span> MyClass();<span class="comment">//实例化对象</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;相同的语法，换一种写法就会发现利用function关键字就可以定义一个类，用对function的调用级可实例化自定义类的对象！既然是类，就应该具备封装性，那么公有属性、公有方法、私有属性、私有方法、构造函数是什么样的呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculator</span>(<span class="params">a,b</span>)</span>&#123;<span class="comment">//定义一个类   </span></div><div class="line">	<span class="keyword">this</span>.PI=<span class="number">3.14</span>;		<span class="comment">//公有属性</span></div><div class="line">	<span class="keyword">this</span>.Text=<span class="string">"计算器"</span>;	<span class="comment">//公有属性</span></div><div class="line">	<span class="keyword">this</span>.A;			<span class="comment">//公有属性</span></div><div class="line">	<span class="keyword">this</span>.B;			<span class="comment">//公有属性</span></div><div class="line">	<span class="keyword">var</span> m_me=<span class="keyword">this</span>;		<span class="comment">//私有属性</span></div><div class="line">	<span class="keyword">var</span> m_Remark=<span class="string">"calculator"</span>;<span class="comment">//私有属性</span></div><div class="line">	<span class="keyword">this</span>.Add=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;	<span class="comment">//公有方法</span></div><div class="line">		<span class="comment">//公有方法可以调用其它公有属性或方法</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.A+<span class="keyword">this</span>.B;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.Sub=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;	<span class="comment">//公有方法</span></div><div class="line">		<span class="keyword">return</span> m_me.SubNum(<span class="keyword">this</span>.A,<span class="keyword">this</span>.B);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> SubNum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="comment">//私有方法</span></div><div class="line">		<span class="keyword">return</span> a-b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> AddNum=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//私有方法</span></div><div class="line">		<span class="comment">//私有方法可以调用私有属性或方法</span></div><div class="line">		<span class="keyword">var</span> X=SubNum(<span class="number">9</span>,<span class="number">6</span>);</div><div class="line">		<span class="comment">/*私有方法不能直接调用公有方法,</span></div><div class="line">		为了调用公有方法，则可以使用m_me这个指向类本身的 私有属性即可*/</div><div class="line">		<span class="keyword">return</span> m_me.Add();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/*其它未封装在公有方法和私有方法中的代码，即为构造函数的 代码,构造代码既可调用公有方法也可调用私有方法，不受限制*/</span></div><div class="line">	<span class="keyword">var</span> TestValue=SubNum(<span class="number">6</span>,<span class="number">5</span>);</div><div class="line">｝</div><div class="line"><span class="keyword">var</span> Obj = <span class="keyword">new</span> calculator(<span class="number">100</span>,<span class="number">50</span>);<span class="comment">//实例化对象</span></div><div class="line"><span class="keyword">var</span> X = Obj.Add();	<span class="comment">//调用公有方法</span></div><div class="line"><span class="keyword">var</span> Y = Obj.PI;		<span class="comment">//调用公有属性</span></div><div class="line">Obj.A=<span class="number">200</span>;</div><div class="line">Obj.B=<span class="number">150</span>;</div><div class="line"><span class="keyword">var</span> Z=Obj.Sub();</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;由this定义的属性或方法就是公有属性或方法，由var定义的属性或方法就是私有方法，不属于私有方法或属性的代码即为构造代码！构造代码将会在对象实例化的时候被执行，而公有和私有方法内定义的代码只有在被调用的时候才会被执行！</p>
+<p>&emsp;&emsp;构造代码可以访问公有和私有方法或属性，公有方法也可以访问公有和私有方法或属性，但是与其它语言不同的是，Javascript定义的类中，私有方法有独立的作用域，无法通过this关键字访问类，因此也无法直接访问公有方法或属性，只可以访问私有方法或属性，为了在私有方法中访问公有方法或属性，可以定义私有属性var m_me=this;然后通过这个私有属性，间接的访问公有方法或属性！</p>
+<p> &emsp;&emsp;到此，封装性就差不多了，但是Javascript是动态解释执行的，因此可以在运行中动态的为对象添加属性或方法(公有)：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">calculator</span>(<span class="params"></span>)</span>&#123;<span class="comment">//定义一个类</span></div><div class="line">	<span class="keyword">this</span>.A=<span class="number">1</span>;		<span class="comment">//定义公有属性</span></div><div class="line">	<span class="keyword">this</span>.Add=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;	<span class="comment">//定义公有方法Add</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.A++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Obj = <span class="keyword">new</span> calculator();	<span class="comment">//实例化对象</span></div><div class="line">Obj.Add();			<span class="comment">//调用公有方法Add</span></div><div class="line">Obj.Sub=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;		<span class="comment">//为Obj对象添加公有方法Sub</span></div><div class="line">	<span class="keyword">return</span> <span class="number">9</span><span class="number">-6</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> X = Obj.Sub();		<span class="comment">//调用公有方法Sub</span></div><div class="line">calculator.prototype.SubNum=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//为calculator类定义公有方法SubNum</span></div><div class="line">	<span class="keyword">return</span> <span class="number">100</span><span class="number">-50</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Y = Obj.SubNum();		<span class="comment">//调用公有方法SubNum</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可以直接为对象动态添加属性和方法，也可以用prototype关键字为类添加公有方法，所有的对象都会包含类中新添加的属性方法，因此可以利用此特性扩展Javascript语言内嵌的对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//去掉首尾空格</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^/</span>s*)|(<span class="regexp">/s*$)/g</span>,<span class="string">""</span>);<span class="comment">//将字符串前后空格,用空字符串替代。</span></div><div class="line">        &#125;</div><div class="line"><span class="keyword">var</span> Text = <span class="string">" Text Text      "</span>;</div><div class="line"><span class="keyword">var</span> NewText = Text.trim();<span class="comment">//去掉前后空格</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;既然可以在类的不同地方或对象上定义属性或方法，那么，如果这些属性或方法同名的话，哪些方法会被隐藏呢？以下是测试代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;<span class="comment">//定义一个类</span></div><div class="line">	<span class="keyword">this</span>.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;	<span class="comment">//定义公有方法Hello</span></div><div class="line">		<span class="keyword">return</span> <span class="string">"Hello A"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Obj = <span class="keyword">new</span> MyClass();	</div><div class="line"><span class="keyword">var</span> X = Obj.Hello();		</div><div class="line">alert(X);			<span class="comment">//结果：Hello A</span></div><div class="line">Obj.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Hello B"</span>;</div><div class="line">	&#125;</div><div class="line"><span class="keyword">var</span> Y = Obj.Hello();</div><div class="line">alert(Y);			<span class="comment">//结果：Hello B</span></div><div class="line">MyClass.prototype.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//</span></div><div class="line">	<span class="keyword">return</span>  <span class="string">"Hello C"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> Z = Obj.Hello();		</div><div class="line">alert(Z);			<span class="comment">//结果：Hello B</span></div><div class="line"></div><div class="line">Obj.Say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;	<span class="comment">//</span></div><div class="line">		<span class="keyword">return</span> <span class="string">"Say B"</span>;</div><div class="line">	&#125;</div><div class="line"><span class="keyword">var</span> YY = Obj.Say();</div><div class="line">alert(YY);			<span class="comment">//结果：Say B</span></div><div class="line">MyClass.prototype.Say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span>  <span class="string">"Say C"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> ZZ = Obj.Say();</div><div class="line">alert(ZZ);			<span class="comment">//结果：Say B</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> Obj2= <span class="keyword">new</span> MyClass();</div><div class="line"><span class="keyword">var</span> K = Obj2.Hello();</div><div class="line">alert(K);			<span class="comment">//结果：Hello A</span></div><div class="line"><span class="keyword">var</span> KK = Obj2.Say();</div><div class="line">alert(KK);			<span class="comment">//结果：Say C</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;通过以上测试，就可以看出，为对象添加的属性只会添加在对象本身上，而不会增加到类中；在类的prototype中增加了方法，则所有的对象都增加了此方法！</p>
+<p>当以不同的方式为类或对象增加了同名的方法或属性，那么只有一个方法可见，其它方法将被隐藏！可访问性由高到低依次为：对象定义的方法&gt;直接在类中定义的方法&gt;通过prototype为类定义的方法</p>
+<p>&emsp;&emsp;这里再提一下静态方法，Javascript也可以有静态方法，一切皆是对象，类也是对象，因此也可以为“类”这个对象添加方法属性，实现类的静态方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClass</span>(<span class="params"></span>)</span>&#123;<span class="comment">//定义一个类</span></div><div class="line">	<span class="keyword">this</span>.Add=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;	<span class="comment">//定义公有方法Add</span></div><div class="line">		<span class="keyword">return</span> a+b;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">MyClass.sub=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="comment">//添加一个静态方法</span></div><div class="line">	<span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> X = MyClass.sub(<span class="number">100</span>,<span class="number">50</span>);<span class="comment">//使用类名直接调用静态方法</span></div></pre></td></tr></table></figure>
+<p> &emsp;&emsp;一般的语言都首先定义类，然后实例化类生成对象，Javascript也是如此，但是除此之外还可以直接定义对象：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> MyObj =&#123;</div><div class="line">	<span class="keyword">this</span>.Text:<span class="string">"我的对象"</span>,</div><div class="line">	<span class="keyword">this</span>.Hello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Hello"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;使用Json格式即可直接定义对象，因为Json格式就是解释器使用的内部格式。</p>
+<p>&emsp;&emsp;到此为止，Javascript类的封装性就差不多了，以后再说一说Javascript类的多态与继承性！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/器/" rel="tag">#器</a>
+          
+            <a href="/tags/术/" rel="tag">#术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/06/first-post/" rel="next" title="第一篇博客">
+                <i class="fa fa-chevron-left"></i> 第一篇博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/12/inherit-from-javascript-object/" rel="prev" title="javascript 对象继承">
+                javascript 对象继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chamblee" />
+          <p class="site-author-name" itemprop="name">Chamblee</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chamblee</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
