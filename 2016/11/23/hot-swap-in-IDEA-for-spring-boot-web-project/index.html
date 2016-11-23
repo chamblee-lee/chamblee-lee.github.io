@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
-1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
+<meta name="description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDEA下的Spring-boot web 项目class热加载">
 <meta property="og:url" content="http://xaoyao.me/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/index.html">
 <meta property="og:site_name" content="Charles' blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
-1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
-<meta property="og:updated_time" content="2016-11-23T12:11:22.000Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：">
+<meta property="og:updated_time" content="2016-11-23T12:12:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA下的Spring-boot web 项目class热加载">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
-1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：">
 
 
 
@@ -327,6 +324,7 @@
 
       
         <p>&emsp;&emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：</p>
+<a id="more"></a>
 <h1 id="1-springloaded"><a href="#1-springloaded" class="headerlink" title="1.springloaded"></a>1.springloaded</h1><p>springloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以实现一边修改一边调试。<br>配置方法，在maven的pom文件中添加以下配置项：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">			    <span class="comment">&lt;!-- spring热部署--&gt;</span></div><div class="line">			    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springloaded<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line">	         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>优点：加载速度非常快</p>
 <p>缺点：静态类或变量难以加载，spring上下文可能会出现错误。</p>
