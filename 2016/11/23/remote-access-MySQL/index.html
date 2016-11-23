@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="chamblee, blog, IT, 道" />
+  <meta name="keywords" content="器,术," />
 
 
 
@@ -84,12 +84,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Charles' blog">
-<meta property="og:url" content="http://xaoyao.me/categories/spring-boot/index.html">
+<meta name="description" content="&amp;emsp;&amp;emsp;MySQL默认仅允许从localhost登录，如果需要从远程登录则要先授权。
+
+myuser使用mypassword从任何主机连接到mysql服务器1GRANT ALL PRIVILEGES ON *.* TO &amp;apos;myuser&amp;apos;@&amp;apos;%&amp;apos; IDENTIFIED BY &amp;apos;mypassword&amp;apos; WITH GRANT O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 允许远程访问">
+<meta property="og:url" content="http://xaoyao.me/2016/11/23/remote-access-MySQL/index.html">
 <meta property="og:site_name" content="Charles' blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;MySQL默认仅允许从localhost登录，如果需要从远程登录则要先授权。
+
+myuser使用mypassword从任何主机连接到mysql服务器1GRANT ALL PRIVILEGES ON *.* TO &amp;apos;myuser&amp;apos;@&amp;apos;%&amp;apos; IDENTIFIED BY &amp;apos;mypassword&amp;apos; WITH GRANT O">
+<meta property="og:updated_time" content="2016-11-23T12:39:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Charles' blog">
+<meta name="twitter:title" content="MySQL 允许远程访问">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;MySQL默认仅允许从localhost登录，如果需要从远程登录则要先授权。
+
+myuser使用mypassword从任何主机连接到mysql服务器1GRANT ALL PRIVILEGES ON *.* TO &amp;apos;myuser&amp;apos;@&amp;apos;%&amp;apos; IDENTIFIED BY &amp;apos;mypassword&amp;apos; WITH GRANT O">
 
 
 
@@ -110,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://xaoyao.me/categories/spring-boot/"/>
+  <link rel="canonical" href="http://xaoyao.me/2016/11/23/remote-access-MySQL/"/>
 
 
-  <title> 分类: spring-boot | Charles' blog </title>
+  <title> MySQL 允许远程访问 | Charles' blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -134,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -232,47 +242,169 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        spring-boot
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL 允许远程访问
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-23T20:35:09+08:00" content="2016-11-23">
+              2016-11-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/23/remote-access-MySQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/remote-access-MySQL/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <p>&emsp;&emsp;MySQL默认仅允许从localhost登录，如果需要从远程登录则要先授权。</p>
+<ol>
+<li>myuser使用mypassword从任何主机连接到mysql服务器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;myuser&apos;@&apos;%&apos; IDENTIFIED BY &apos;mypassword&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>允许用户myuser从ip为192.168.1.3的主机连接到mysql服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;myuser&apos;@&apos;192.168.1.3&apos; IDENTIFIED BY &apos;mypassword&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+</li>
+<li><p>仅可远程访问某一个数据库mydb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON mydb.* TO &apos;myuser&apos;@&apos;%&apos; IDENTIFIED BY &apos;mypassword&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改完成以后，刷新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush privileges;</div></pre></td></tr></table></figure></li>
+</ol>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/" itemprop="url">
-              
-                <span itemprop="name">IDEA下的Spring-boot web 项目class热加载</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-23T19:50:36+08:00"
-              content="2016-11-23" >
-          11-23
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/器/" rel="tag">#器</a>
+          
+            <a href="/tags/术/" rel="tag">#术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/" rel="next" title="IDEA下的Spring-boot web 项目class热加载">
+                <i class="fa fa-chevron-left"></i> IDEA下的Spring-boot web 项目class热加载
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/23/install-MySQL-5-7-in-centOS-7/" rel="prev" title="centOS 7 安装 MySQL 5.7">
+                centOS 7 安装 MySQL 5.7 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -280,6 +412,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/23/remote-access-MySQL/"
+           data-title="MySQL 允许远程访问" data-url="http://xaoyao.me/2016/11/23/remote-access-MySQL/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -299,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -350,6 +499,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -453,6 +613,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
