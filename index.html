@@ -256,6 +256,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/" itemprop="url">
+                  IDEA下的Spring-boot web 项目class热加载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-23T19:50:36+08:00" content="2016-11-23">
+              2016-11-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/spring-boot/" itemprop="url" rel="index">
+                    <span itemprop="name">spring-boot</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&emsp;&emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：</p>
+<h1 id="1-springloaded"><a href="#1-springloaded" class="headerlink" title="1.springloaded"></a>1.springloaded</h1><p>springloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以实现一边修改一边调试。<br>配置方法，在maven的pom文件中添加以下配置项：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">			    <span class="comment">&lt;!-- spring热部署--&gt;</span></div><div class="line">			    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springloaded<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line">	         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>优点：加载速度非常快</p>
+<p>缺点：静态类或变量难以加载，spring上下文可能会出现错误。</p>
+<h1 id="2-spring-boot-devtools"><a href="#2-spring-boot-devtools" class="headerlink" title="2. spring-boot-devtools"></a>2. spring-boot-devtools</h1><p>devtools采用的是自动重启机制，当tools检测到代码更改会自动重启spring的上下文，但由于是热启动，所以速度很快(冷启动8秒，热启动3秒，比springloaded稍慢)。<br>配置方法，在maven的pom文件中添加以下的依赖即可：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>优点：快速的重启，并且保持重启之前的会话状态，即使手动重启以后，仍然可以保持上一次的会话状态。</p>
+<p>缺点：相比springloaded，速度稍慢一点。</p>
+<p><a href="http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools" target="_blank" rel="external">http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools</a></p>
+<p><strong>NOTE:</strong></p>
+<ol>
+<li><p>springloaded和spring-boot-devtools都是监视编译之后的class文件，不是监视java源文件，在eclipse中源文件会自动编译成class文件，但是在IDEA中，需要手动点一下编译按钮，这样java源文件才能编译为class文件。</p>
+</li>
+<li><p>如果spring-boot web项目中静态资源文件需要在修改后即时加载，并不需要以上两种方案，spring-boot是默认支持的，对于thymeleaf模板文件需要在application.properties中设置属性spring.thymeleaf.cache=false.<br>在IDEA中静态资源文件在修改后也需要点击编译按钮，修改才能即时生效。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/12/java-and-dotnet/" itemprop="url">
                   java 和 .NET 随笔
                 </a>
@@ -900,7 +1034,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -908,7 +1042,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

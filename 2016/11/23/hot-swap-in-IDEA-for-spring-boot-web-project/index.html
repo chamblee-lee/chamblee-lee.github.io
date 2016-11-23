@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="原发布于2009年5月6日，现转载于此。一些特性现在已经包含在ES6规范中，详情请参考ES6相关文档原文链接
-&amp;emsp;&amp;emsp;JavaScript已经可以模拟出面向对象的封装和继承特性，但是不幸的是Javascript对多态特性的支持非常弱！其它面向对象语言的多态一般都由方法重载和虚方法来实现多态，Javascript也通过这两种途径来实现！">
+<meta name="description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
+1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript 对象多态特性">
-<meta property="og:url" content="http://xaoyao.me/2016/11/12/polymorphism-of-javascript-object/index.html">
+<meta property="og:title" content="IDEA下的Spring-boot web 项目class热加载">
+<meta property="og:url" content="http://xaoyao.me/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/index.html">
 <meta property="og:site_name" content="Charles' blog">
-<meta property="og:description" content="原发布于2009年5月6日，现转载于此。一些特性现在已经包含在ES6规范中，详情请参考ES6相关文档原文链接
-&amp;emsp;&amp;emsp;JavaScript已经可以模拟出面向对象的封装和继承特性，但是不幸的是Javascript对多态特性的支持非常弱！其它面向对象语言的多态一般都由方法重载和虚方法来实现多态，Javascript也通过这两种途径来实现！">
-<meta property="og:updated_time" content="2016-11-12T09:17:22.000Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
+1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
+<meta property="og:updated_time" content="2016-11-23T12:11:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript 对象多态特性">
-<meta name="twitter:description" content="原发布于2009年5月6日，现转载于此。一些特性现在已经包含在ES6规范中，详情请参考ES6相关文档原文链接
-&amp;emsp;&amp;emsp;JavaScript已经可以模拟出面向对象的封装和继承特性，但是不幸的是Javascript对多态特性的支持非常弱！其它面向对象语言的多态一般都由方法重载和虚方法来实现多态，Javascript也通过这两种途径来实现！">
+<meta name="twitter:title" content="IDEA下的Spring-boot web 项目class热加载">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：
+1.springloadedspringloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以">
 
 
 
@@ -117,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://xaoyao.me/2016/11/12/polymorphism-of-javascript-object/"/>
+  <link rel="canonical" href="http://xaoyao.me/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/"/>
 
 
-  <title> javascript 对象多态特性 | Charles' blog </title>
+  <title> IDEA下的Spring-boot web 项目class热加载 | Charles' blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
             
             
               
-                javascript 对象多态特性
+                IDEA下的Spring-boot web 项目class热加载
               
             
           </h1>
@@ -272,8 +272,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-12T16:49:19+08:00" content="2016-11-12">
-              2016-11-12
+            <time itemprop="dateCreated" datetime="2016-11-23T19:50:36+08:00" content="2016-11-23">
+              2016-11-23
             </time>
           </span>
 
@@ -286,8 +286,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
+                  <a href="/categories/spring-boot/" itemprop="url" rel="index">
+                    <span itemprop="name">spring-boot</span>
                   </a>
                 </span>
 
@@ -302,8 +302,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/12/polymorphism-of-javascript-object/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/polymorphism-of-javascript-object/" itemprop="commentsCount"></span>
+                <a href="/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,13 +326,21 @@
       
 
       
-        <p><strong>原发布于2009年5月6日，现转载于此。一些特性现在已经包含在ES6规范中，详情请参考ES6相关文档</strong><br><a href="http://blog.csdn.net/boral_li/article/details/4159141" target="_blank" rel="external">原文链接</a></p>
-<p>&emsp;&emsp;JavaScript已经可以模拟出面向对象的封装和继承特性，但是不幸的是Javascript对多态特性的支持非常弱！其它面向对象语言的多态一般都由方法重载和虚方法来实现多态，Javascript也通过这两种途径来实现！</p>
-<a id="more"></a>
-<p>&emsp;&emsp;<strong>重载：</strong>由于Javascript是弱类型的语言，而且又支持可变参数，当我们定义重载方法的时候，解释器无法通过参数类型和参数个数来区分不同的重载方法，因此方法重载是不被支持的！当先后定义了同名的方法的时候，后定义的方法会覆盖先定义的方法！</p>
-<p>&emsp;&emsp;既然解释器无法分辨重载方法，那就手动区分不同的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MyClass=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> AddNum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> a+b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> AddString=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"I am here"</span>+a+b;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.Add=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span>(a)==<span class="string">"number"</span>)</div><div class="line">			<span class="keyword">return</span> AddNum(a,b);</div><div class="line">		<span class="keyword">else</span></div><div class="line">			<span class="keyword">return</span> AddString(a,b);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> MyObj = <span class="keyword">new</span> MyClass();</div><div class="line"><span class="keyword">var</span> X = MyObj.Add(<span class="number">5</span>,<span class="number">6</span>);</div><div class="line"><span class="keyword">var</span> Y = MyObj.Add(<span class="string">"A"</span>,<span class="string">"FFFFFF"</span>);</div><div class="line">alert(X);		<span class="comment">//结果：11</span></div><div class="line">alert(Y);		<span class="comment">//结果：I am hereAFFFFFF</span></div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;<strong>虚方法：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BaseClass</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.Hello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.Say();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClassA</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.Say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Hello"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyClassB</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.Say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"This is MyClassB"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">MyClassA.prototype = <span class="keyword">new</span> BaseClass();</div><div class="line">MyClassB.prototype = <span class="keyword">new</span> BaseClass();</div><div class="line"><span class="keyword">var</span> ObjA = <span class="keyword">new</span> MyClassA();</div><div class="line"><span class="keyword">var</span> XX = ObjA.Hello();</div><div class="line">alert(XX);			<span class="comment">//结果：Hello</span></div><div class="line"><span class="keyword">var</span> ObjB = <span class="keyword">new</span> MyClassB();</div><div class="line"><span class="keyword">var</span> YY = ObjB.Hello();</div><div class="line">alert(YY);			<span class="comment">//结果：This is MyClassB</span></div></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;由于Javascript解释执行的特性，因此可以再基类中调用将要在派生类中定义的方法，那么这个基类方法就相当于虚方法，可以实现模拟多态！</p>
+        <p>&emsp;&emsp;普通的java 项目都可以一边修改一边调试，Eclipse等IDE会自动加载新修改的class，但是在Spring-boot中默认却不支持这种开发方式，每次修改代码以后都需要关闭，重启，十分影响效率。下面是两种支持代码热交换的解决方案：</p>
+<h1 id="1-springloaded"><a href="#1-springloaded" class="headerlink" title="1.springloaded"></a>1.springloaded</h1><p>springloaded采用的是classloader的方式实现类的热加载，非常类似于普通的java项目，可以实现一边修改一边调试。<br>配置方法，在maven的pom文件中添加以下配置项：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">			    <span class="comment">&lt;!-- spring热部署--&gt;</span></div><div class="line">			    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springloaded<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line">	         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>优点：加载速度非常快</p>
+<p>缺点：静态类或变量难以加载，spring上下文可能会出现错误。</p>
+<h1 id="2-spring-boot-devtools"><a href="#2-spring-boot-devtools" class="headerlink" title="2. spring-boot-devtools"></a>2. spring-boot-devtools</h1><p>devtools采用的是自动重启机制，当tools检测到代码更改会自动重启spring的上下文，但由于是热启动，所以速度很快(冷启动8秒，热启动3秒，比springloaded稍慢)。<br>配置方法，在maven的pom文件中添加以下的依赖即可：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>优点：快速的重启，并且保持重启之前的会话状态，即使手动重启以后，仍然可以保持上一次的会话状态。</p>
+<p>缺点：相比springloaded，速度稍慢一点。</p>
+<p><a href="http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools" target="_blank" rel="external">http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools</a></p>
+<p><strong>NOTE:</strong></p>
+<ol>
+<li><p>springloaded和spring-boot-devtools都是监视编译之后的class文件，不是监视java源文件，在eclipse中源文件会自动编译成class文件，但是在IDEA中，需要手动点一下编译按钮，这样java源文件才能编译为class文件。</p>
+</li>
+<li><p>如果spring-boot web项目中静态资源文件需要在修改后即时加载，并不需要以上两种方案，spring-boot是默认支持的，对于thymeleaf模板文件需要在application.properties中设置属性spring.thymeleaf.cache=false.<br>在IDEA中静态资源文件在修改后也需要点击编译按钮，修改才能即时生效。</p>
+</li>
+</ol>
 
       
     </div>
@@ -366,17 +374,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/12/inherit-from-javascript-object/" rel="next" title="javascript 对象继承">
-                <i class="fa fa-chevron-left"></i> javascript 对象继承
+              <a href="/2016/11/12/java-and-dotnet/" rel="next" title="java 和 .NET 随笔">
+                <i class="fa fa-chevron-left"></i> java 和 .NET 随笔
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/12/java-and-dotnet/" rel="prev" title="java 和 .NET 随笔">
-                java 和 .NET 随笔 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -402,8 +406,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/12/polymorphism-of-javascript-object/"
-           data-title="javascript 对象多态特性" data-url="http://xaoyao.me/2016/11/12/polymorphism-of-javascript-object/">
+      <div class="ds-thread" data-thread-key="2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/"
+           data-title="IDEA下的Spring-boot web 项目class热加载" data-url="http://xaoyao.me/2016/11/23/hot-swap-in-IDEA-for-spring-boot-web-project/">
       </div>
     
   </div>
@@ -494,7 +498,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-springloaded"><span class="nav-number">1.</span> <span class="nav-text">1.springloaded</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-spring-boot-devtools"><span class="nav-number">2.</span> <span class="nav-text">2. spring-boot-devtools</span></a></li></ol></div>
             
           </div>
         </section>
