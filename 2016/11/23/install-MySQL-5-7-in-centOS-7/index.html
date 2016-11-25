@@ -94,7 +94,7 @@
 <meta property="og:description" content="&amp;emsp;&amp;emsp;centos7 默认的数据库是MariaDB，并且yum源中也没有MySQL的安装源，所以需要手动添加源然后安装。
 
 下载wget1sudo yum install -y wget">
-<meta property="og:updated_time" content="2016-11-23T12:46:16.000Z">
+<meta property="og:updated_time" content="2016-11-25T13:23:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centOS 7 安装 MySQL 5.7">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;centos7 默认的数据库是MariaDB，并且yum源中也没有MySQL的安装源，所以需要手动添加源然后安装。
@@ -331,28 +331,28 @@
       
         <p>&emsp;&emsp;centos7 默认的数据库是MariaDB，并且yum源中也没有MySQL的安装源，所以需要手动添加源然后安装。</p>
 <ol>
-<li>下载wget<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install -y wget</div></pre></td></tr></table></figure>
+<li>下载wget<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install -y wget</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <a id="more"></a>
 <ol>
 <li><p>使用wget从MySQL官网下载最新的yum源，官方地址：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> ，这里选择Redhat7的下载地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装下载的rpm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</div></pre></td></tr></table></figure>
 </li>
 <li><p>开始用yum下载安装MySQL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install mysql-server</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install mysql-server</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动MySQL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shell&gt; sudo service mysqld start</div><div class="line">shell&gt; sudo service mysqld status</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shell&gt; sudo service mysqld start</div><div class="line">shell&gt; sudo service mysqld status</div></pre></td></tr></table></figure>
 </li>
 <li><p>查询临时密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shell&gt; sudo grep &apos;temporary password&apos; /var/log/mysqld.log</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shell&gt; sudo grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.log</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改root密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shell&gt; mysql -uroot -p </div><div class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;MyNewPass4!&apos;;</div></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">shell&gt; mysql -uroot -p </div><div class="line">mysql&gt; ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'MyNewPass4!'</span>;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -469,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -477,7 +477,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -486,7 +486,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

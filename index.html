@@ -256,6 +256,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/25/docker-practice/" itemprop="url">
+                  ubuntu下的docker基本操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-25T20:55:54+08:00" content="2016-11-25">
+              2016-11-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/25/docker-practice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/docker-practice/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Prepare"><a href="#Prepare" class="headerlink" title="Prepare"></a>Prepare</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Make sure the Linux kernel version is higher than 3.10</span></div><div class="line">$ uname -r</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#update host</div><div class="line">sudo apt-get update</div><div class="line">#install neccessary packages</div><div class="line">$ sudo apt-get install linux-image-generic-lts-trusty</div><div class="line">reboot host</div><div class="line">$ sudo reboot</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#check wget</div><div class="line">$ which wget</div><div class="line">$ sudo apt-get update </div><div class="line">$ sudo apt-get install wget</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/25/docker-practice/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/25/install-ssh-service-for-centos7/" itemprop="url">
                   centos7下安装ssh服务
                 </a>
@@ -325,9 +449,9 @@
 
       
         
-          <h2 id="centos-7-需要独立安装网络管理命令"><a href="#centos-7-需要独立安装网络管理命令" class="headerlink" title="centos 7 需要独立安装网络管理命令"></a>centos 7 需要独立安装网络管理命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum instatll net-tools –y</div></pre></td></tr></table></figure>
-<h2 id="检查ssh是否已经安装（centos7默认会安装openssh"><a href="#检查ssh是否已经安装（centos7默认会安装openssh" class="headerlink" title="检查ssh是否已经安装（centos7默认会安装openssh):"></a>检查ssh是否已经安装（centos7默认会安装openssh):</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep ssh</div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">openssh-client-xxxxx</div><div class="line">openssh-xxxxx</div><div class="line">openssh-server-xxxxx</div><div class="line">libssh2-xxxxx</div></pre></td></tr></table></figure></p>
+          <h2 id="centos-7-需要独立安装网络管理命令"><a href="#centos-7-需要独立安装网络管理命令" class="headerlink" title="centos 7 需要独立安装网络管理命令"></a>centos 7 需要独立安装网络管理命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum instatll net-tools –y</div></pre></td></tr></table></figure>
+<h2 id="检查ssh是否已经安装（centos7默认会安装openssh"><a href="#检查ssh是否已经安装（centos7默认会安装openssh" class="headerlink" title="检查ssh是否已经安装（centos7默认会安装openssh):"></a>检查ssh是否已经安装（centos7默认会安装openssh):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep ssh</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">openssh-client-xxxxx</div><div class="line">openssh-xxxxx</div><div class="line">openssh-server-xxxxx</div><div class="line">libssh2-xxxxx</div></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/25/install-ssh-service-for-centos7/#more" rel="contents">
               阅读全文 &raquo;
@@ -457,7 +581,7 @@
 <ol>
 <li>vagrant的ssh配置参数</li>
 </ol>
-<p>&emsp;&emsp;ssh配置参数是指box中已经配置过的ssh参数，这些参数用于vagrant登录box的ssh。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.ssh.port=&quot;2221&quot;</div><div class="line">config.ssh.username=&quot;xxxx&quot;</div><div class="line">config.ssh.password=&quot;xxxx&quot;</div><div class="line">config.ssh.private_key_path=&quot;xxxxx&quot;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;ssh配置参数是指box中已经配置过的ssh参数，这些参数用于vagrant登录box的ssh。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.ssh.port=<span class="string">"2221"</span></div><div class="line">config.ssh.username=<span class="string">"xxxx"</span></div><div class="line">config.ssh.password=<span class="string">"xxxx"</span></div><div class="line">config.ssh.private_key_path=<span class="string">"xxxxx"</span></div></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/23/vagrant-ssh-login/#more" rel="contents">
               阅读全文 &raquo;
@@ -581,7 +705,7 @@
         
           <p>&emsp;&emsp;centos7 默认的数据库是MariaDB，并且yum源中也没有MySQL的安装源，所以需要手动添加源然后安装。</p>
 <ol>
-<li>下载wget<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install -y wget</div></pre></td></tr></table></figure>
+<li>下载wget<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install -y wget</div></pre></td></tr></table></figure>
 </li>
 </ol>
           <div class="post-more-link text-center">
@@ -1364,132 +1488,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/06/first-post/" itemprop="url">
-                  第一篇博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-06T14:37:08+08:00" content="2016-11-06">
-              2016-11-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/default/" itemprop="url" rel="index">
-                    <span itemprop="name">default</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/06/first-post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/first-post/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&emsp;&emsp;进入IT行业已近十年，期间也断断续续写过不少技术博客，但大都散落各处，当回头准备整理这些博客的时候，发现大多数的博客内容早已经过时了。IT行业的技术发展日新月异，很多红极一时的技术也只是昙花一现，早就被时代遗忘了。</p>
-<p>&emsp;&emsp;曾经的专业是计算机科学与技术，这些年来一直在做技术，知道何谓技术，但从未体会到什么是计算机科学。我很容易就能想象到什么是物理学，生物学，医学，但是长久以来一直不知道什么是计算机学，直到阅读了吴军的《数学之美》才明白那些计算机科学家都在做什么，才终于想明白科学和技术之间的区别。自己所依仗的技术只不过计算机科学参天大树上的一叶，四季更替，树叶不断落下又不断长出新叶，自己不得不从一片叶子跳到另一片叶子。总是一边寻找新的叶子，一边感叹，这叶子也凋零得太快了。可为什么不尝试跳到树枝，再到树干上去呢？</p>
-<p>&emsp;&emsp;道家哲学中讲认知万物的层次分为“器”，“术”，“道”。器即指工具，术即指技术和方法，道即指对事物本质的认知。对于计算机领域来讲器即是开发，设计，管理工具，如IDE，VCS等，还包括各种编程语言如C，C#，Java，python等。术即是开发设计方法，如各种设计方法，设计模式，构架设计，经验总结等。道即是各种设计思想，思维模式，现实中也比较抽象，难以言传，比如触类旁通和对新知识的领悟力，对技术本质的认知，突破常规的思维方式，面对棘手问题时的灵光一现，研究与创新能力。</p>
-<p>&emsp;&emsp;认清了计算机领域的器术道，那些过时的博客内容被遗忘也就是理所当然的了，那些只在“器”与“术”的层面，技术更替，自然被埋没，而只有涉及到“道”的层面，内容才不会过时，成长才能积累沉淀，由术及道，这就是这个博客的主旨。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1528,7 +1533,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1536,7 +1541,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1545,7 +1550,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

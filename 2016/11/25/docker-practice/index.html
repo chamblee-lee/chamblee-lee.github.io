@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="器,术,道," />
+  <meta name="keywords" content="器,术,docker," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;进入IT行业已近十年，期间也断断续续写过不少技术博客，但大都散落各处，当回头准备整理这些博客的时候，发现大多数的博客内容早已经过时了。IT行业的技术发展日新月异，很多红极一时的技术也只是昙花一现，早就被时代遗忘了。
-&amp;emsp;&amp;emsp;曾经的专业是计算机科学与技术，这些年来一直在做技术，知道何谓技术，但从未体会到什么是计算机科学。我很容易就能想象到什么是物理学，生物学，">
+<meta name="description" content="Prepare12#Make sure the Linux kernel version is higher than 3.10$ uname -r
+123456#update hostsudo apt-get update#install neccessary packages$ sudo apt-get install linux-image-generic-lts-trustyreboot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇博客">
-<meta property="og:url" content="http://xaoyao.me/2016/11/06/first-post/index.html">
+<meta property="og:title" content="ubuntu下的docker基本操作">
+<meta property="og:url" content="http://xaoyao.me/2016/11/25/docker-practice/index.html">
 <meta property="og:site_name" content="Charles' blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;进入IT行业已近十年，期间也断断续续写过不少技术博客，但大都散落各处，当回头准备整理这些博客的时候，发现大多数的博客内容早已经过时了。IT行业的技术发展日新月异，很多红极一时的技术也只是昙花一现，早就被时代遗忘了。
-&amp;emsp;&amp;emsp;曾经的专业是计算机科学与技术，这些年来一直在做技术，知道何谓技术，但从未体会到什么是计算机科学。我很容易就能想象到什么是物理学，生物学，">
-<meta property="og:updated_time" content="2016-11-06T10:17:21.000Z">
+<meta property="og:description" content="Prepare12#Make sure the Linux kernel version is higher than 3.10$ uname -r
+123456#update hostsudo apt-get update#install neccessary packages$ sudo apt-get install linux-image-generic-lts-trustyreboot">
+<meta property="og:updated_time" content="2016-11-25T13:21:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一篇博客">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;进入IT行业已近十年，期间也断断续续写过不少技术博客，但大都散落各处，当回头准备整理这些博客的时候，发现大多数的博客内容早已经过时了。IT行业的技术发展日新月异，很多红极一时的技术也只是昙花一现，早就被时代遗忘了。
-&amp;emsp;&amp;emsp;曾经的专业是计算机科学与技术，这些年来一直在做技术，知道何谓技术，但从未体会到什么是计算机科学。我很容易就能想象到什么是物理学，生物学，">
+<meta name="twitter:title" content="ubuntu下的docker基本操作">
+<meta name="twitter:description" content="Prepare12#Make sure the Linux kernel version is higher than 3.10$ uname -r
+123456#update hostsudo apt-get update#install neccessary packages$ sudo apt-get install linux-image-generic-lts-trustyreboot">
 
 
 
@@ -117,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://xaoyao.me/2016/11/06/first-post/"/>
+  <link rel="canonical" href="http://xaoyao.me/2016/11/25/docker-practice/"/>
 
 
-  <title> 第一篇博客 | Charles' blog </title>
+  <title> ubuntu下的docker基本操作 | Charles' blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
             
             
               
-                第一篇博客
+                ubuntu下的docker基本操作
               
             
           </h1>
@@ -272,8 +272,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-06T14:37:08+08:00" content="2016-11-06">
-              2016-11-06
+            <time itemprop="dateCreated" datetime="2016-11-25T20:55:54+08:00" content="2016-11-25">
+              2016-11-25
             </time>
           </span>
 
@@ -286,8 +286,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/default/" itemprop="url" rel="index">
-                    <span itemprop="name">default</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -302,8 +302,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/06/first-post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/first-post/" itemprop="commentsCount"></span>
+                <a href="/2016/11/25/docker-practice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/docker-practice/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,10 +326,22 @@
       
 
       
-        <p>&emsp;&emsp;进入IT行业已近十年，期间也断断续续写过不少技术博客，但大都散落各处，当回头准备整理这些博客的时候，发现大多数的博客内容早已经过时了。IT行业的技术发展日新月异，很多红极一时的技术也只是昙花一现，早就被时代遗忘了。</p>
-<p>&emsp;&emsp;曾经的专业是计算机科学与技术，这些年来一直在做技术，知道何谓技术，但从未体会到什么是计算机科学。我很容易就能想象到什么是物理学，生物学，医学，但是长久以来一直不知道什么是计算机学，直到阅读了吴军的《数学之美》才明白那些计算机科学家都在做什么，才终于想明白科学和技术之间的区别。自己所依仗的技术只不过计算机科学参天大树上的一叶，四季更替，树叶不断落下又不断长出新叶，自己不得不从一片叶子跳到另一片叶子。总是一边寻找新的叶子，一边感叹，这叶子也凋零得太快了。可为什么不尝试跳到树枝，再到树干上去呢？</p>
-<p>&emsp;&emsp;道家哲学中讲认知万物的层次分为“器”，“术”，“道”。器即指工具，术即指技术和方法，道即指对事物本质的认知。对于计算机领域来讲器即是开发，设计，管理工具，如IDE，VCS等，还包括各种编程语言如C，C#，Java，python等。术即是开发设计方法，如各种设计方法，设计模式，构架设计，经验总结等。道即是各种设计思想，思维模式，现实中也比较抽象，难以言传，比如触类旁通和对新知识的领悟力，对技术本质的认知，突破常规的思维方式，面对棘手问题时的灵光一现，研究与创新能力。</p>
-<p>&emsp;&emsp;认清了计算机领域的器术道，那些过时的博客内容被遗忘也就是理所当然的了，那些只在“器”与“术”的层面，技术更替，自然被埋没，而只有涉及到“道”的层面，内容才不会过时，成长才能积累沉淀，由术及道，这就是这个博客的主旨。</p>
+        <h2 id="Prepare"><a href="#Prepare" class="headerlink" title="Prepare"></a>Prepare</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Make sure the Linux kernel version is higher than 3.10</span></div><div class="line">$ uname -r</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#update host</div><div class="line">sudo apt-get update</div><div class="line">#install neccessary packages</div><div class="line">$ sudo apt-get install linux-image-generic-lts-trusty</div><div class="line">reboot host</div><div class="line">$ sudo reboot</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#check wget</div><div class="line">$ which wget</div><div class="line">$ sudo apt-get update </div><div class="line">$ sudo apt-get install wget</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Install-docker"><a href="#Install-docker" class="headerlink" title="Install docker"></a>Install docker</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://get.docker.com/ | sh</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#verify docker</div><div class="line">$ sudo docker run hello-world</div><div class="line">#check docker version</div><div class="line">$ sudo docker version</div><div class="line">$ sudo docker info</div></pre></td></tr></table></figure>
+<h2 id="Manage-images"><a href="#Manage-images" class="headerlink" title="Manage images"></a>Manage images</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#Show images</div><div class="line">$ sudo docker images</div><div class="line">#pull new image</div><div class="line">$ sudo docker pull centos</div><div class="line">#remove image</div><div class="line">$ sudo docker rmi [images id]</div></pre></td></tr></table></figure>
+<h2 id="Manage-container"><a href="#Manage-container" class="headerlink" title="Manage container"></a>Manage container</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#run container from image</div><div class="line">$ sudo docker run -t -i ubuntu:14.04/bin/bash</div><div class="line">#list all running containers</div><div class="line">$ sudo docker ps</div><div class="line">#show specific container or all the containers</div><div class="line">$ docker ps -a | grep 896...</div><div class="line">#stop container</div><div class="line">$ sudo docker stop [id]</div><div class="line">#remove container</div><div class="line">$ sudo docker rm [container id]</div><div class="line">#start an exist container</div><div class="line">$ sudo docker start [container]</div><div class="line">$ sudo docker restart [container]</div></pre></td></tr></table></figure>
+<h2 id="Build-image"><a href="#Build-image" class="headerlink" title="Build image"></a>Build image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#commit changes from container to image</div><div class="line">$ sudo docker commit -m &quot;Added json gem&quot;-a &quot;Kate Smith&quot; \0b2616b0e5a8 ouruser/sinatra:v2</div><div class="line">#build image from Dockerfile</div><div class="line">$ sudo docker build -t ouruser/sinatra:v2 .</div></pre></td></tr></table></figure>
+<h2 id="Docker-file"><a href="#Docker-file" class="headerlink" title="Docker file"></a>Docker file</h2><p><a href="https://docs.docker.com/reference/builder/" target="_blank" rel="external">https://docs.docker.com/reference/builder/</a></p>
+<p><a href="https://docs.docker.com/articles/dockerfile_best-practices/" target="_blank" rel="external">https://docs.docker.com/articles/dockerfile_best-practices/</a></p>
+<h2 id="Utils"><a href="#Utils" class="headerlink" title="Utils"></a>Utils</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#add user to docker group </div><div class="line">$ sudo usermod -aG docker  &lt;username&gt;</div><div class="line"># stop all container</div><div class="line">$ docker stop `docker ps -aq`</div><div class="line">#remove container batch</div><div class="line">$ docker rm  $(docker ps -aq)</div><div class="line">#Show container with no trunked</div><div class="line">$ docker ps -a --no-trunc</div></pre></td></tr></table></figure>
+<h2 id="Pull-images-from-insecure-registry"><a href="#Pull-images-from-insecure-registry" class="headerlink" title="Pull images from insecure-registry"></a>Pull images from insecure-registry</h2><p>solution 1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#to stop the service</div><div class="line">$ sudo service docker stop </div><div class="line">$ sudo docker -d --insecure-registry llbuild-docker02.na.xxxxx.com:5000</div></pre></td></tr></table></figure></p>
+<p>solution 2<br>Edit file  /etc/default/docker</p>
+<p>DOCKER_OPTS=”–insecure-registry docker.xxxco.com:5000 –insecure-registry llbuild-docker02.na.xxxco.com:5000 –insecure-registry 192.168.0.0/16”</p>
+<p>then restart docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service docker restart</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -356,7 +368,7 @@
           
             <a href="/tags/术/" rel="tag">#术</a>
           
-            <a href="/tags/道/" rel="tag">#道</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
         </div>
       
@@ -365,13 +377,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/25/install-ssh-service-for-centos7/" rel="next" title="centos7下安装ssh服务">
+                <i class="fa fa-chevron-left"></i> centos7下安装ssh服务
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/12/oo-feature-of-javascript/" rel="prev" title="javascript 面向对象特性">
-                javascript 面向对象特性 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -397,8 +409,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/06/first-post/"
-           data-title="第一篇博客" data-url="http://xaoyao.me/2016/11/06/first-post/">
+      <div class="ds-thread" data-thread-key="2016/11/25/docker-practice/"
+           data-title="ubuntu下的docker基本操作" data-url="http://xaoyao.me/2016/11/25/docker-practice/">
       </div>
     
   </div>
@@ -489,7 +501,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepare"><span class="nav-number">1.</span> <span class="nav-text">Prepare</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-docker"><span class="nav-number">2.</span> <span class="nav-text">Install docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manage-images"><span class="nav-number">3.</span> <span class="nav-text">Manage images</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manage-container"><span class="nav-number">4.</span> <span class="nav-text">Manage container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-image"><span class="nav-number">5.</span> <span class="nav-text">Build image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-file"><span class="nav-number">6.</span> <span class="nav-text">Docker file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Utils"><span class="nav-number">7.</span> <span class="nav-text">Utils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pull-images-from-insecure-registry"><span class="nav-number">8.</span> <span class="nav-text">Pull images from insecure-registry</span></a></li></ol></div>
             
           </div>
         </section>
